@@ -37,12 +37,12 @@
                     echo $result1."-".$result2."=".$result;
                 break;
                 case "Multiply":
-                    $result=$result1 + $result2;
-                    echo $result1."+".$result2."=".$result;
+                    $result=$result1 * $result2;
+                    echo $result1."*".$result2."=".$result;
                 break;
                 case "Divide":
-                    $result=$result1 + $result2;
-                    echo $result1."+".$result2."=".$result;
+                    $result=$result1 / $result2;
+                    echo $result1."/".$result2."=".$result;
                 break;
             }
         }
