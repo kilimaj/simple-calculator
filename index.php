@@ -7,9 +7,10 @@
     <title>Sinple calculator</title>
 </head>
 <body>
-    <form>
-        <input type="text" name="num1" placeholder="Number1">
-        <input type="text" name="num2" placeholder="Number2">
+    <div id="error"></div>
+    <form name="form" onsubmit="return validate()" action="calculator.php">
+        <input type="text" name="num1" id="num1" placeholder="Number1">
+        <input type="text" name="num2" id="num2" placeholder="Number2">
         <select name="operator" id="">
             <option>Add</option>
             <option>Subtract</option>
@@ -17,10 +18,10 @@
             <option>Divide</option>
         </select>
         <br><br>
-        <button type="submit" name="submit" value="submit">Calculate</button>
+        <button type="submit" name="submit">Calculate</button>
     </form>
 
-
+    <br>
     <?php
         if (isset($_GET['submit'])) {
             $result1 = $_GET['num1'];
@@ -28,12 +29,12 @@
             $operator = $_GET['operator'];
             switch ($operator) {
                 case "Add":
-                    $result=$result1 + $result2;
+                    $result = $result1 + $result2;
                     echo $result1."+".$result2."=".$result;
                 break;
                 case "Subtract":
-                    $result=$result1 - $result2;
-                    echo $result1."+".$result2."=".$result;
+                    $result = $result1 - $result2;
+                    echo $result1."-".$result2."=".$result;
                 break;
                 case "Multiply":
                     $result=$result1 + $result2;
@@ -46,5 +47,23 @@
             }
         }
     ?>
+
+
+
+    <script>
+        function validate(){
+            var num1 = document.form.num1.value;
+            var num2 = document.form.num2.value;
+            if(isNaN(num1) || isNaN(num2)){
+               document.getElementById("error").innerHTML="Enter Numeric value only";
+               return false;
+            }else{
+                return true
+            }
+        }
+        
+    </script>
+
+
 </body>
 </html>
